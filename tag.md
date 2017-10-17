@@ -22,8 +22,9 @@ Tüm sayfalarda `</head>` öncesi yer alması gereken script tag'i
 <!--BeyondVisit Tag Start-->
 <script>
     (function (w, d) {
-        var n = d.createElement("script"); //----- ↴
-        n.src = "//api.beyondvisit.com/api/v1/<user_code>/robot.js";
+        var user_code = "<user_code>"; // bu alan kullanıcı kodunuz ile değiştirilecek
+        var n = d.createElement("script"); 
+        n.src = "//api.beyondvisit.com/api/v1/" + user_code + "/robot.js";
         d.getElementsByTagName("head")[0].appendChild(n);
     }(window, document));
     window.beyondvisit_q= window.beyondvisit_q||[];
