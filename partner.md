@@ -130,7 +130,7 @@ Başarılı olması durumunda gelen cevaptaki `userToken` alanını kullanıcı 
 Login Tokeni Alma 
 ================
 
-<a href="https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/739da96bea5df8c10dc9" target="_blank">![Run in Postman](https://run.pstmn.io/button.svg)</a>
+<a href="https://app.getpostman.com/run-collection/739da96bea5df8c10dc9" target="_blank">![Run in Postman](https://run.pstmn.io/button.svg)</a>
 
 Kullanıcı girişi yapılmak istendiği zaman önce login tokeni üretmelisiniz. 
 Login tokenini üretek için ``http://panel.beyondvisit.com/external/LoginToken`` servis adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekmektedir.
