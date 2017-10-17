@@ -1,5 +1,8 @@
 [Tüm Dökümantasyonlar](https://github.com/KozaDigital/BeyondVisitDocumentation/blob/master/README.md)
 
+Postman Örnek Kodu
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/739da96bea5df8c10dc9)
+
 BeyondVisit Partner entegrasyonu
 ===================
 
