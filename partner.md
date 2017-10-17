@@ -16,7 +16,7 @@ Kullanıcı oluşturma
 **Servis Adresi:** ``http://panel.beyondvisit.com/external/CreateUser``
 
 adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekiyor.
-    
+```json    
     {
         "apikey":"<api_key>",
         "sign":"<MD5(apikey+secretkey)>",
@@ -28,6 +28,7 @@ adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekiyor.
             "Site":"http://www.example.com"
         }
     }
+```
 ## Kullanımı
 **apikey**:
 *Type: String,*
@@ -90,13 +91,13 @@ Sonuç
 Bu istekten 2 farklı sonuç alabilirsiniz;
 
 ## Başarısız
-
+```json
     { 
-        status : false,
-        code: 1,
-        message : "The 'user.Name' property should not be empty" 
+        "status" : false,
+        "code": 1,
+        "message" : "The 'user.Name' property should not be empty" 
     }
-
+```
 `status` ***true*** olmadığı sürece kullanıcı oluşturma işlemi başarısız sonuçlanmış demektir.Hata mesajı örnekteki gibi belirtilir.
 
 Hata kodları ve açıklamaları
@@ -112,13 +113,13 @@ Hata kodları ve açıklamaları
 
 
 ## Başarılı
-
+```json
     { 
-        status : true,
-        message : "Success", 
-        userToken :  "<user unique token>"
+        "status" : true,
+        "message" : "Success", 
+        "userToken" :  "<user unique token>"
     }
-
+```
 Başarılı olması durumunda gelen cevaptaki `userToken` alanını kullanıcı için kaydetmelisiniz.Daha sonra bu token kullanıcı girişi için kullanmanız gereken _parametre_ dir.
 
 <a name="anahtar"></a>
@@ -127,13 +128,13 @@ Login Tokeni Alma
 
 Kullanıcı girişi yapılmak istendiği zaman önce login tokeni üretmelisiniz. 
 Login tokenini üretek için ``http://panel.beyondvisit.com/external/LoginToken`` servis adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekmektedir.
-
+```json
     {
         "apiKey":"<api_key>",
         "sign":"<MD5(apikey+secretkey)>",
         "userToken": "<userToken>"
     }
-
+```
 ## Kullanımı
 **userToken**
 *Type: String,*
@@ -146,13 +147,13 @@ Sonuç
 Bu istekten 2 farklı sonuç alabilirsiniz;
 
 ## Başarısız
-
+```json
     { 
         status  : false,
         code    : 1, 
         message : "User not found with token: [userToken]" 
     }
-
+```
 `status` ***true*** olmadığı sürece token oluşturma işlemi başarısız sonuçlanmış demektir.Hata mesajı örnekteki gibi belirtilir.
 
 Hata kodları ve açıklamaları
@@ -164,14 +165,17 @@ Hata kodları ve açıklamaları
 | 3    | ApiKey not found                        |
 
 ## Başarılı
-
+```json
     { 
-        status : true, 
-        message : "Success", 
-        loginToken : "[user_login_token]" 
+        "status" : true, 
+        "message" : "Success", 
+        "loginToken" : "[user_login_token]",
+        "userCode" : "[user_code]"
     }
-
+```
 Başarılı olması durumunda gelen cevaptaki `loginToken` alanını kullanının login işlemini gerçekleştirmek için kullanılacaktır.
+
+`userCode` alanı scriptlerde kullanılacak olan kullanıcı kodudur.
 
 
 <a name="oturum"></a>
