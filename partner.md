@@ -1,8 +1,5 @@
 [Tüm Dökümantasyonlar](https://github.com/KozaDigital/BeyondVisitDocumentation/blob/master/README.md)
 
-Postman Örnek Kodu
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/739da96bea5df8c10dc9)
-
 BeyondVisit Partner entegrasyonu
 ===================
 
@@ -16,6 +13,9 @@ Entegrasyon aşamaları
 <a name="user"></a>
 Kullanıcı oluşturma 
 ===================================
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9642b870d3eebd8f4c17)
+
 **Servis Adresi:** ``http://panel.beyondvisit.com/external/CreateUser``
 
 adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekiyor.
@@ -128,6 +128,8 @@ Başarılı olması durumunda gelen cevaptaki `userToken` alanını kullanıcı 
 <a name="anahtar"></a>
 Login Tokeni Alma 
 ================
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/739da96bea5df8c10dc9)
 
 Kullanıcı girişi yapılmak istendiği zaman önce login tokeni üretmelisiniz. 
 Login tokenini üretek için ``http://panel.beyondvisit.com/external/LoginToken`` servis adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekmektedir.
