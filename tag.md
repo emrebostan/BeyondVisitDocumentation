@@ -41,7 +41,7 @@ Tüm sayfalarda `</head>` öncesi yer alması gereken script tag'i
 
 **\<user_code\>**
 *type: String `required`*
->BV ön eki ile başlayan partner kodunuz. (`BV-******`)
+>BV ön eki ile başlayan kodunuz. (`BV-******`)
 
 **\<page_type\>**
 *type: String:Any `required`*
