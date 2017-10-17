@@ -14,7 +14,8 @@ Entegrasyon aşamaları
 Kullanıcı oluşturma 
 ===================================
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9642b870d3eebd8f4c17)
+<a href="https://app.getpostman.com/run-collection/9642b870d3eebd8f4c17" target="_blank">![Run in Postman](https://run.pstmn.io/button.svg)</a>
+
 
 **Servis Adresi:** ``http://panel.beyondvisit.com/external/CreateUser``
 
@@ -129,7 +130,7 @@ Başarılı olması durumunda gelen cevaptaki `userToken` alanını kullanıcı 
 Login Tokeni Alma 
 ================
 
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/739da96bea5df8c10dc9)
+<a href="https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/739da96bea5df8c10dc9" target="_blank">![Run in Postman](https://run.pstmn.io/button.svg)</a>
 
 Kullanıcı girişi yapılmak istendiği zaman önce login tokeni üretmelisiniz. 
 Login tokenini üretek için ``http://panel.beyondvisit.com/external/LoginToken`` servis adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekmektedir.
