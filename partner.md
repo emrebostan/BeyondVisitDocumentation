@@ -147,7 +147,7 @@ Sonuç
 Bu istekten 2 farklı sonuç alabilirsiniz;
 
 ## Başarısız
-```javascript
+```json
     { 
         "status"  : false,
         "code"    : 1, 
