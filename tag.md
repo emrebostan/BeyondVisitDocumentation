@@ -1,3 +1,5 @@
+[Tüm Dökümantasyonlar](https://github.com/KozaDigital/BeyondVisitDocumentation/blob/master/README.md)
+
 BeyonVisit Tag Kurulumu
 ======================
 
