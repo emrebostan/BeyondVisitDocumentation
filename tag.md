@@ -21,10 +21,10 @@ Tüm sayfalarda `</head>` öncesi yer alması gereken script tag'i
 ```html
 <!--BeyondVisit Tag Start-->
 <script>
-    var bv_partner = "<partner_code>";
+    var bv_user = "<user_code>";
     (function (w, d) {
         var n = d.createElement("script");
-        n.src = "//api.beyondvisit.com/api/v1/"+bv_partner+"/robot.js";
+        n.src = "//api.beyondvisit.com/api/v1/"+bv_user+"/robot.js";
         d.getElementsByTagName("head")[0].appendChild(n);
     }(window, document));
     window.beyondvisit_q= window.beyondvisit_q||[];
@@ -39,7 +39,7 @@ Tüm sayfalarda `</head>` öncesi yer alması gereken script tag'i
 <!--BeyondVisit Tag End-->
 ```
 
-**\<partner_code\>**
+**\<user_code\>**
 *type: String `required`*
 >BV ön eki ile başlayan partner kodunuz. (`BV-******`)
 
