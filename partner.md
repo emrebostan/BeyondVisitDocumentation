@@ -147,11 +147,11 @@ Sonuç
 Bu istekten 2 farklı sonuç alabilirsiniz;
 
 ## Başarısız
-```json
+```javascript
     { 
-        status  : false,
-        code    : 1, 
-        message : "User not found with token: [userToken]" 
+        "status"  : false,
+        "code"    : 1, 
+        "message" : "User not found with token: [userToken]" 
     }
 ```
 `status` ***true*** olmadığı sürece token oluşturma işlemi başarısız sonuçlanmış demektir.Hata mesajı örnekteki gibi belirtilir.
