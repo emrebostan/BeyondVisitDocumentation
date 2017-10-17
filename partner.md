@@ -1,0 +1,185 @@
+BeyondVisit Partner entegrasyonu
+===================
+
+Entegrasyon aşamaları 
+1. [Kullanıcı oluşturma](#user)
+2. [Login Tokeni Alma](#anahtar)
+3. [Oturum Açma](#oturum)
+
+
+
+<a name="user"></a>
+Kullanıcı oluşturma 
+===================================
+**Servis Adresi:** ``http://panel.beyondvisit.com/external/CreateUser``
+
+adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekiyor.
+    
+    {
+        "apikey":"<api_key>",
+        "sign":"<MD5(apikey+secretkey)>",
+        "user":
+        {
+            "Name":"John",
+            "Surname":"Doe",
+            "Email":"johndoe@example.com",
+            "Site":"http://www.example.com"
+        }
+    }
+## Kullanımı
+**apikey**:
+*Type: String,*
+*MaxLength: 32*
+
+>Mail ile iletilen api anahtarınız
+
+
+----------
+
+
+**sign**:
+*Type: String,*
+*MaxLength: 32*
+
+>Api anahtarınız ile SecretKey'inizin tek bir stringe birleştirilip MD5 ile hashlenmiş halidir
+
+----------
+
+
+**user**:
+*Type: Object,*
+
+----------
+
+
+**user.Name**:
+*Type: String,*
+*MaxLength: 50*
+>Açılmak istenen kullanıcının ismi
+
+----------
+
+
+**user.Surname**:
+*Type: String,*
+*MaxLength: 50*
+>Açılmak istenen kullanıcının soyismi
+
+----------
+
+
+**user.Email**:
+*Type: String,*
+*MaxLength: 254*
+>Açılmak istenen kullanıcının e-posta adresi
+
+----------
+
+
+**user.Site**:
+*Type: String,*
+*MaxLength: 2000*
+>Açılmak istenen kullanıcının sahip olduğu site anasayfa url si
+
+
+
+Sonuç
+======
+Bu istekten 2 farklı sonuç alabilirsiniz;
+
+## Başarısız
+
+    { 
+        status : false,
+        code: 1,
+        message : "The 'user.Name' property should not be empty" 
+    }
+
+`status` ***true*** olmadığı sürece kullanıcı oluşturma işlemi başarısız sonuçlanmış demektir.Hata mesajı örnekteki gibi belirtilir.
+
+Hata kodları ve açıklamaları
+============================
+| code | message                                                            |
+|------|--------------------------------------------------------------------|
+| 1    | The 'user.Site' property should start with 'http://' or 'https://' |
+| 2    | The'user.Name' property should not be empty                        |
+| 3    | The 'user.Surname' property should not be empty                    |
+| 4    | The 'user.Email' property should not be empty                      |
+| 5    | Authentication failed                                              |
+| 6    | ApiKey not found                                                   |
+
+
+## Başarılı
+
+    { 
+        status : true,
+        message : "Success", 
+        userToken :  "<user unique token>"
+    }
+
+Başarılı olması durumunda gelen cevaptaki `userToken` alanını kullanıcı için kaydetmelisiniz.Daha sonra bu token kullanıcı girişi için kullanmanız gereken _parametre_ dir.
+
+<a name="anahtar"></a>
+Login Tokeni Alma 
+================
+
+Kullanıcı girişi yapılmak istendiği zaman önce login tokeni üretmelisiniz. 
+Login tokenini üretek için ``http://panel.beyondvisit.com/external/LoginToken`` servis adresine aşağıdaki parametreleri içeren bir post isteği atmanız gerekmektedir.
+
+    {
+        "apiKey":"<api_key>",
+        "sign":"<MD5(apikey+secretkey)>",
+        "userToken": "<userToken>"
+    }
+
+## Kullanımı
+**userToken**
+*Type: String,*
+*MaxLength: 32*
+>CreateUser servis metodunun sonucu olarak dönen userToken değeridir.
+
+
+Sonuç
+======
+Bu istekten 2 farklı sonuç alabilirsiniz;
+
+## Başarısız
+
+    { 
+        status  : false,
+        code    : 1, 
+        message : "User not found with token: [userToken]" 
+    }
+
+`status` ***true*** olmadığı sürece token oluşturma işlemi başarısız sonuçlanmış demektir.Hata mesajı örnekteki gibi belirtilir.
+
+Hata kodları ve açıklamaları
+
+| code | message                                 |
+|------|-----------------------------------------|
+| 1    | User not found with token: [userToken]  |
+| 2    | Authentication failed                   |
+| 3    | ApiKey not found                        |
+
+## Başarılı
+
+    { 
+        status : true, 
+        message : "Success", 
+        loginToken : "[user_login_token]" 
+    }
+
+Başarılı olması durumunda gelen cevaptaki `loginToken` alanını kullanının login işlemini gerçekleştirmek için kullanılacaktır.
+
+
+<a name="oturum"></a>
+BeyonVisit üzerinde oturum açma 
+=============================
+
+Login tokeni alma işlemi gerçekleştirdikten sonra alınan `loginToken` değeri kullanılarak kullanıcının browserini aşağıdaki url ye yönlendirmelisiniz.
+
+    http://panel.beyondvisit.com/external/Login/{loginToken}
+
+Tüm adımların doğru gerçekleştirilmesi durumunda kullanıcı panele erişebilir olacaktır.
+
+Sisteminiz üzerinden login işleminin daha sonra tekrar gerçekleştirilmek istendiğinde `Login Token Alma` işleminden itibaren bu adımlar tekrarlanmalıdır.
