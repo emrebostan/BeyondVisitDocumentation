@@ -22,9 +22,8 @@ Tüm sayfalarda `</head>` öncesi yer alması gereken script tag'i
 <!--BeyondVisit Tag Start-->
 <script>
     (function (w, d) {
-        var user_code = "<user_code>"; // bu alan kullanıcı kodunuz ile değiştirilecek
         var n = d.createElement("script"); 
-        n.src = "//api.beyondvisit.com/api/v1/" + user_code + "/robot.js";
+        n.src = "//<domain>.beyondvisit.com/robot.js";
         n.async=1;
         d.getElementsByTagName("head")[0].appendChild(n);
     }(window, document));
@@ -40,9 +39,9 @@ Tüm sayfalarda `</head>` öncesi yer alması gereken script tag'i
 <!--BeyondVisit Tag End-->
 ```
 
-**\<user_code\>**
+**\<domain\>**
 *type: String `required`*
->BV ön eki ile başlayan partner kodunuz. (`BV-******`)
+>Bizimle anlaştığınız web sitenizin Domaini. (`******`)
 
 **\<page_type\>**
 *type: String:Any `required`*
